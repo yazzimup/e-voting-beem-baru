@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#087f75">
+
+    <title>Pemilihan Ketua BEEM | E-Voting</title>
+
+    <link rel="stylesheet" href="voting.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-brand">
+        <div class="logo">BEEM</div>
+        <div>
+            <h2>E-VOTING BEEM</h2>
+            <span>PEMILIHAN 2026/2027</span>
+        </div>
+    </div>
+
+    <div class="nav-right">
+        <div class="user-info">
+            <div class="user-avatar">M</div>
+            <div>
+                <strong>Mahasiswa</strong>
+                <small>Peserta Pemilihan</small>
+            </div>
+        </div>
+        <button class="logout-btn" id="logoutBtn">Keluar</button>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="welcome-section">
+        <div>
+            <span class="section-label">PEMILIHAN ORGANISASI MAHASISWA</span>
+            <h1>Tentukan Pilihanmu.</h1>
+            <p>
+                Kenali setiap pasangan calon dan pilih pemimpin
+                terbaik untuk BEEM periode 2026/2027.
+            </p>
+        </div>
+
+        <div class="period-card">
+            <span>PERIODE PEMILIHAN</span>
+            <strong>2026 / 2027</strong>
+            <small>E-Voting BEEM</small>
+        </div>
+    </section>
+
+    <section class="instruction">
+        <div class="instruction-icon">!</div>
+        <div>
+            <strong>Petunjuk Pemilihan</strong>
+            <p>
+                Silakan baca visi dan misi setiap pasangan calon
+                sebelum menentukan pilihan. Anda hanya memiliki
+                satu hak suara.
+            </p>
+        </div>
+    </section>
+
+    <section class="candidate-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">KANDIDAT PEMILIHAN</span>
+                <h2>Pasangan Calon</h2>
+            </div>
+
+            <span class="candidate-count" id="candidateCount">
+                0 PASANGAN CALON
+            </span>
+        </div>
+
+        <div class="candidate-list" id="candidateList">
+            <!-- Kartu calon dibuat otomatis oleh JavaScript -->
+        </div>
+
+    </section>
+
+    <section class="bottom-note">
+        <div class="note-icon">✓</div>
+        <p>
+            Pastikan pilihan Anda sudah benar sebelum mengirimkan suara.
+            Suara yang sudah dikirim tidak dapat diubah.
+        </p>
+    </section>
+
+</main>
+
+<!-- MODAL KONFIRMASI -->
+
+<div class="modal-overlay" id="confirmModal">
+
+    <div class="modal-box">
+
+        <div class="modal-icon">?</div>
+
+        <span class="section-label">KONFIRMASI PILIHAN</span>
+
+        <h2>Apakah Anda yakin?</h2>
+
+        <p>
+            Anda akan memilih pasangan calon:
+        </p>
+
+        <div class="selected-candidate" id="selectedCandidate">
+            Pasangan Calon Nomor 1
+        </div>
+
+        <p class="warning-text">
+            Pastikan pilihan Anda sudah benar sebelum melanjutkan.
+        </p>
+
+        <div class="modal-actions">
+            <button class="cancel-btn" id="cancelBtn">
+                Periksa Kembali
+            </button>
+
+            <button class="confirm-btn" id="confirmBtn">
+                Konfirmasi Pilihan
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script src="voting.js"></script>
+
+</body>
+</html>

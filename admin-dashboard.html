@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - E-Voting BEEM</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <h2>BEEM</h2>
+        <p>E-Voting 2026/2027</p>
+    </div>
+
+    <nav>
+        <a href="#dashboard" class="active">Dashboard</a>
+        <a href="#hasil">Hasil Pemilihan</a>
+        <a href="#status">Status Pemilihan</a>
+    </nav>
+
+    <button class="logout-button" id="logoutButton">
+        Keluar
+    </button>
+</aside>
+
+<main class="main-content">
+    <header class="topbar">
+        <div>
+            <h1>Dashboard Admin</h1>
+            <p>Panel pengelolaan pemilihan Ketua dan Wakil Ketua BEEM</p>
+        </div>
+        <div class="admin-label">Admin / Panitia</div>
+    </header>
+
+    <section id="dashboard">
+        <div class="welcome">
+            <h2>Selamat Datang, Admin!</h2>
+            <p>Berikut ringkasan pemilihan BEEM periode 2026/2027.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <p>Total Mahasiswa Terdaftar</p>
+                <h2 id="totalStudents">—</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Mahasiswa Sudah Memilih</p>
+                <h2 id="totalVoters">—</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Belum Memilih</p>
+                <h2 id="notVoted">—</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Total Suara Masuk</p>
+                <h2 id="totalVotes">—</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel" id="status">
+        <div class="panel-heading">
+            <div>
+                <h2>Status Pemilihan</h2>
+                <p>Pengaturan pembukaan dan penutupan pemilihan.</p>
+            </div>
+            <span class="status-badge" id="electionStatus">Memuat...</span>
+        </div>
+
+        <div class="status-controls">
+            <button id="openElection" class="button-primary">
+                Buka Pemilihan
+            </button>
+
+            <button id="closeElection" class="button-danger">
+                Tutup Pemilihan
+            </button>
+        </div>
+
+        <p class="notice">
+            Tombol ini memerlukan backend admin. Jangan mengandalkan
+            perubahan tampilan browser untuk membuka atau menutup pemilihan.
+        </p>
+    </section>
+
+    <section class="panel" id="hasil">
+        <div class="panel-heading">
+            <div>
+                <h2>Hasil Perolehan Suara</h2>
+                <p>Hasil hanya tersedia setelah pemilihan ditutup.</p>
+            </div>
+        </div>
+
+        <div id="resultsArea" class="results-area">
+            <p>Data hasil akan ditampilkan setelah terhubung ke database.</p>
+        </div>
+    </section>
+
+    <footer>
+        E-Voting BEEM © 2026/2027
+    </footer>
+</main>
+
+<script src="admin-dashboard.js"></script>
+</body>
+</html>

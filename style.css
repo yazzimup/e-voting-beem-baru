@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: #edf3f2;
+}
+
+.login-container {
+    display: flex;
+    width: 900px;
+    max-width: 100%;
+    min-height: 540px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.10);
+}
+
+.login-info {
+    width: 45%;
+    padding: 55px 40px;
+    background: linear-gradient(145deg, #087f70, #075b55);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.tagline {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    opacity: 0.85;
+}
+
+.login-info h1 {
+    font-size: 30px;
+    line-height: 1.35;
+    margin-bottom: 18px;
+}
+
+.login-info p {
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.period {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 35px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.login-form-area {
+    width: 55%;
+    padding: 55px 45px;
+}
+
+.form-heading {
+    margin-bottom: 25px;
+}
+
+.form-heading h2 {
+    color: #183b37;
+    font-size: 27px;
+    margin-bottom: 9px;
+}
+
+.form-heading p {
+    color: #788581;
+    font-size: 14px;
+}
+
+.role-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 5px;
+    background: #f0f5f4;
+    border-radius: 9px;
+    margin-bottom: 28px;
+}
+
+.role-tab {
+    flex: 1;
+    padding: 12px 5px;
+    border: none;
+    background: transparent;
+    color: #64716e;
+    font-weight: bold;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.role-tab.active {
+    background: #087f70;
+    color: white;
+}
+
+form label {
+    display: block;
+    margin-bottom: 9px;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #344b47;
+}
+
+form input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dce5e2;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+form input:focus {
+    border-color: #087f70;
+    box-shadow: 0 0 0 3px rgba(8, 127, 112, .1);
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 27px;
+    border: none;
+    border-radius: 8px;
+    background: #087f70;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background: #06685d;
+}
+
+.hidden {
+    display: none;
+}
+
+.message {
+    min-height: 20px;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #b54747;
+}
+
+.footer {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 12px;
+    color: #98a39f;
+}
+
+@media (max-width: 700px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .login-info,
+    .login-form-area {
+        width: 100%;
+    }
+
+    .login-info {
+        padding: 35px 28px;
+    }
+
+    .login-info h1 {
+        font-size: 25px;
+    }
+
+    .login-form-area {
+        padding: 35px 28px;
+    }
+}

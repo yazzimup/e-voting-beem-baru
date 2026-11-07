@@ -1,0 +1,16 @@
+{
+  "name": "e-voting-beem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "admin-dashboard.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
+    "jose": "^6.2.15"
+  }
+}

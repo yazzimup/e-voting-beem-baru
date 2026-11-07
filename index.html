@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login E-Voting BEEM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-info">
+        <div class="brand">BEEM</div>
+        <span class="tagline">PEMILIHAN KETUA & WAKIL KETUA</span>
+
+        <h1>Suaramu Menentukan Masa Depan BEEM.</h1>
+        <p>
+            Gunakan hak pilihmu untuk menentukan pemimpin
+            BEEM periode 2026/2027.
+        </p>
+
+        <div class="period">PERIODE 2026/2027</div>
+    </div>
+
+    <div class="login-form-area">
+        <div class="form-heading">
+            <h2>Selamat Datang</h2>
+            <p>Silakan masuk untuk melanjutkan.</p>
+        </div>
+
+        <div class="role-tabs">
+            <button class="role-tab active" id="studentTab"
+                    type="button" onclick="switchRole('student')">
+                Mahasiswa
+            </button>
+
+            <button class="role-tab" id="adminTab"
+                    type="button" onclick="switchRole('admin')">
+                Admin / Panitia
+            </button>
+        </div>
+
+        <!-- LOGIN MAHASISWA -->
+        <form id="studentForm">
+            <label for="nim">Nomor Induk Mahasiswa (NIM)</label>
+            <input type="text" id="nim" placeholder="Masukkan NIM"
+                   autocomplete="username" required>
+
+            <label for="studentName">Nama Lengkap</label>
+            <input type="text" id="studentName"
+                   placeholder="Masukkan nama lengkap"
+                   autocomplete="name" required>
+
+            <button type="submit" class="login-button">
+                Masuk sebagai Mahasiswa
+            </button>
+        </form>
+
+        <!-- LOGIN ADMIN -->
+        <form id="adminForm" class="hidden">
+            <label for="username">Username Admin</label>
+            <input type="text" id="username"
+                   placeholder="Masukkan username"
+                   autocomplete="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password"
+                   placeholder="Masukkan password"
+                   autocomplete="current-password" required>
+
+            <button type="submit" class="login-button">
+                Masuk sebagai Admin
+            </button>
+        </form>
+
+        <p id="message" class="message"></p>
+
+        <div class="footer">
+            E-Voting BEEM © 2026/2027
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

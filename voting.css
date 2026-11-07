@@ -1,0 +1,573 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f4f8f7;
+    color: #193d38;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: #fff;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eaf0ee;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 47px;
+    height: 47px;
+    border-radius: 11px;
+    background: #087f75;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+}
+
+.nav-brand h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+}
+
+.nav-brand span {
+    display: block;
+    color: #8b9b97;
+    font-size: 9px;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #e2f4ef;
+    color: #087f75;
+    font-weight: 800;
+}
+
+.user-info strong,
+.user-info small {
+    display: block;
+}
+
+.user-info strong {
+    font-size: 12px;
+}
+
+.user-info small {
+    color: #94a39f;
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+.logout-btn {
+    padding: 10px 17px;
+    border: 1px solid #e1e9e6;
+    background: white;
+    border-radius: 7px;
+    color: #647c76;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1200px;
+    width: 86%;
+    margin: auto;
+}
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 55px 0 40px;
+    gap: 20px;
+}
+
+.section-label {
+    font-size: 10px;
+    color: #07877c;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.welcome-section h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 39px;
+    margin: 12px 0;
+    color: #173c36;
+}
+
+.welcome-section p {
+    color: #80938e;
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 510px;
+}
+
+.period-card {
+    background: #087f75;
+    color: white;
+    padding: 21px 27px;
+    border-radius: 12px;
+    min-width: 195px;
+}
+
+.period-card span,
+.period-card strong,
+.period-card small {
+    display: block;
+}
+
+.period-card span {
+    font-size: 9px;
+    letter-spacing: 1px;
+    opacity: .8;
+}
+
+.period-card strong {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 23px;
+    margin: 9px 0 4px;
+}
+
+.period-card small {
+    font-size: 10px;
+    opacity: .8;
+}
+
+/* INSTRUCTION */
+
+.instruction {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 19px 22px;
+    border: 1px solid #d9ebe6;
+    background: #eaf6f2;
+    border-radius: 10px;
+    margin-bottom: 48px;
+}
+
+.instruction-icon {
+    min-width: 26px;
+    height: 26px;
+    background: #087f75;
+    color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+}
+
+.instruction strong {
+    font-size: 13px;
+}
+
+.instruction p {
+    color: #728b83;
+    font-size: 11px;
+    line-height: 1.8;
+    margin-top: 5px;
+}
+
+/* CANDIDATES */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 25px;
+    margin-top: 8px;
+}
+
+.candidate-count {
+    background: #e4f3ef;
+    color: #087f75;
+    padding: 10px 14px;
+    font-size: 10px;
+    font-weight: 800;
+    border-radius: 7px;
+}
+
+.candidate-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.candidate-card {
+    background: white;
+    border: 1px solid #e8efec;
+    border-radius: 13px;
+    overflow: hidden;
+    transition: .25s;
+}
+
+.candidate-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(24,74,62,.07);
+}
+
+.candidate-top {
+    padding: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #edf2f0;
+}
+
+.candidate-number {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #07877c;
+}
+
+.candidate-tag {
+    padding: 7px 11px;
+    border-radius: 5px;
+    background: #edf8f4;
+    color: #07877c;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.candidate-body {
+    padding: 24px;
+}
+
+.candidate-photo {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 23px;
+}
+
+.photo-placeholder {
+    width: 110px;
+    height: 125px;
+    background: #eaf3f0;
+    border: 1px dashed #b5d7cc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #7b9c91;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 8px;
+}
+
+.candidate-names {
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.candidate-names h3 {
+    font-size: 15px;
+    color: #20443d;
+    margin-bottom: 5px;
+}
+
+.candidate-names span {
+    color: #849690;
+    font-size: 10px;
+}
+
+.vision-box {
+    background: #f5f9f7;
+    padding: 16px;
+    border-radius: 9px;
+    margin-bottom: 15px;
+}
+
+.vision-box h4 {
+    font-size: 11px;
+    color: #087f75;
+    margin-bottom: 9px;
+}
+
+.vision-box p {
+    font-size: 11px;
+    color: #788b85;
+    line-height: 1.8;
+}
+
+.mission-box {
+    padding: 5px 3px 17px;
+}
+
+.mission-box h4 {
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.mission-box ol {
+    padding-left: 17px;
+}
+
+.mission-box li {
+    color: #788b85;
+    font-size: 11px;
+    line-height: 1.9;
+    padding-left: 4px;
+}
+
+.select-btn {
+    width: 100%;
+    height: 47px;
+    border: none;
+    border-radius: 8px;
+    background: #087f75;
+    color: white;
+    font-weight: 800;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: .5px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.select-btn:hover {
+    background: #05665e;
+}
+
+.bottom-note {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin: 45px 0;
+    padding: 17px;
+    border-top: 1px solid #e4ece8;
+    color: #85968f;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.note-icon {
+    width: 26px;
+    height: 26px;
+    background: #e0f2eb;
+    color: #07877c;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+/* MODAL */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(16,42,37,.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    padding: 32px;
+    border-radius: 15px;
+    text-align: center;
+    animation: appear .2s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-icon {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    background: #e7f5f0;
+    color: #087f75;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    font-weight: 800;
+    margin: 0 auto 20px;
+}
+
+.modal-box h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 23px;
+    margin: 10px 0;
+}
+
+.modal-box > p {
+    color: #81918b;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.selected-candidate {
+    background: #eff8f4;
+    color: #087f75;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    margin: 17px 0;
+}
+
+.modal-box .warning-text {
+    font-size: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-actions button {
+    flex: 1;
+    min-height: 45px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    border: 1px solid #e0e9e5;
+    color: #607a72;
+    background: white;
+}
+
+.confirm-btn {
+    border: none;
+    background: #087f75;
+    color: white;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 750px) {
+    .container {
+        width: 90%;
+    }
+
+    .welcome-section {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 40px 0 30px;
+    }
+
+    .welcome-section h1 {
+        font-size: 31px;
+    }
+
+    .period-card {
+        width: 100%;
+    }
+
+    .candidate-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 14px 5%;
+    }
+
+    .nav-brand h2 {
+        font-size: 12px;
+    }
+
+    .nav-brand span {
+        font-size: 8px;
+    }
+
+    .nav-right {
+        gap: 10px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .logout-btn {
+        font-size: 10px;
+        padding: 9px 12px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .candidate-body {
+        padding: 18px;
+    }
+
+    .modal-box {
+        padding: 25px 19px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+}
