@@ -1,31 +1,19 @@
 
 import { createClient } from "@supabase/supabase-js";
-import { SignJWT } from "jose";
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const secretKey = process.env.SUPABASE_SECRET_KEY;
 const publishableKey = process.env.SUPABASE_PUBLISHABLE_KEY;
 const sessionSecret = process.env.APP_SESSION_SECRET;
 
-const adminDb = createClient(supabaseUrl, secretKey, {
-    auth: {
-        persistSession: false,
-        autoRefreshToken: false
-    }
-});
-
-const authClient = createClient(supabaseUrl, publishableKey, {
-    auth: {
-        persistSession: false,
-        autoRefreshToken: false
-    }
-});
-
 function normalizeName(value) {
     return value.trim().replace(/\s+/g, " ").toUpperCase();
 }
 
 async function createSession(payload) {
+    // Dynamic import untuk kompatibilitas jose versi 6
+    const { SignJWT } = await import("jose");
+
     const key = new TextEncoder().encode(sessionSecret);
 
     return await new SignJWT(payload)
@@ -36,15 +24,27 @@ async function createSession(payload) {
 }
 
 export default async function handler(req, res) {
+    res.setHeader("Cache-Control", "no-store");
+
     if (req.method !== "POST") {
         return res.status(405).json({
+            success: false,
             message: "Metode tidak diizinkan."
         });
     }
 
-    if (!supabaseUrl || !secretKey || !publishableKey ||
-        !sessionSecret || sessionSecret.length < 32) {
+    // Periksa konfigurasi server
+    if (
+        !supabaseUrl ||
+        !secretKey ||
+        !publishableKey ||
+        !sessionSecret ||
+        sessionSecret.length < 32 ||
+        !process.env.ADMIN_USERNAME ||
+        !process.env.ADMIN_LOGIN_EMAIL
+    ) {
         return res.status(500).json({
+            success: false,
             message: "Konfigurasi server belum lengkap."
         });
     }
@@ -54,9 +54,34 @@ export default async function handler(req, res) {
 
         let sessionPayload;
 
-        // LOGIN ADMIN
+        // Buat koneksi Supabase di dalam handler
+        const adminDb = createClient(
+            supabaseUrl,
+            secretKey,
+            {
+                auth: {
+                    persistSession: false,
+                    autoRefreshToken: false
+                }
+            }
+        );
+
+        const authClient = createClient(
+            supabaseUrl,
+            publishableKey,
+            {
+                auth: {
+                    persistSession: false,
+                    autoRefreshToken: false
+                }
+            }
+        );
+
+        // =========================
+        // LOGIN ADMIN / PANITIA
+        // =========================
         if (role === "admin") {
-            const { username, password } = req.body;
+            const { username, password } = req.body || {};
 
             if (
                 !username ||
@@ -64,6 +89,7 @@ export default async function handler(req, res) {
                 username !== process.env.ADMIN_USERNAME
             ) {
                 return res.status(401).json({
+                    success: false,
                     message: "Username atau password salah."
                 });
             }
@@ -76,6 +102,7 @@ export default async function handler(req, res) {
 
             if (error || !data.user) {
                 return res.status(401).json({
+                    success: false,
                     message: "Username atau password salah."
                 });
             }
@@ -93,6 +120,7 @@ export default async function handler(req, res) {
                 !["admin", "panitia"].includes(profile.role)
             ) {
                 return res.status(403).json({
+                    success: false,
                     message: "Akun tidak memiliki akses admin."
                 });
             }
@@ -103,12 +131,20 @@ export default async function handler(req, res) {
             };
         }
 
+        // =========================
         // LOGIN MAHASISWA
+        // =========================
         else if (role === "student") {
-            const { nim, fullName } = req.body;
+            const { nim, fullName } = req.body || {};
 
-            if (!nim || !fullName) {
+            if (
+                typeof nim !== "string" ||
+                typeof fullName !== "string" ||
+                !nim.trim() ||
+                !fullName.trim()
+            ) {
                 return res.status(400).json({
+                    success: false,
                     message: "NIM dan nama lengkap wajib diisi."
                 });
             }
@@ -126,6 +162,7 @@ export default async function handler(req, res) {
                     normalizeName(fullName)
             ) {
                 return res.status(401).json({
+                    success: false,
                     message: "NIM atau nama lengkap tidak sesuai."
                 });
             }
@@ -134,17 +171,25 @@ export default async function handler(req, res) {
                 sub: student.nim,
                 role: "student"
             };
-        } else {
+        }
+
+        // =========================
+        // ROLE TIDAK VALID
+        // =========================
+        else {
             return res.status(400).json({
+                success: false,
                 message: "Jenis login tidak valid."
             });
         }
 
+        // Buat token sesi
         const token = await createSession(sessionPayload);
 
-        res.setHeader("Set-Cookie", [
+        // Simpan token dalam cookie HttpOnly
+        res.setHeader("Set-Cookie",
             `beem_session=${token}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=14400`
-        ]);
+        );
 
         return res.status(200).json({
             success: true,
@@ -159,6 +204,7 @@ export default async function handler(req, res) {
         console.error("Login error:", error);
 
         return res.status(500).json({
+            success: false,
             message: "Terjadi kesalahan pada server."
         });
     }
