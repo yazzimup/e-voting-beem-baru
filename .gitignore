@@ -1,0 +1,14 @@
+# Environment dan secret
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# System
+.DS_Store
+Thumbs.db
